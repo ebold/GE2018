@@ -11,6 +11,7 @@ import time
 from preprocessing import Vote_distribution_preprocessed,Result_2018,NA_list_preprocessed
 from la import l2_Exact, l1_LP
 from model import final_model
+from ml import bo_parameter_serach
 
 
 df_NA_list_2018 = NA_list_preprocessed()
@@ -107,14 +108,13 @@ def compare_methods(method):
     print("Starting..")
     start_time = time.time()
     if  method == "L1-BO":
-        paras = parameter_serach(iters=15,norm="l1")
+        paras = bo_parameter_serach(iters=15,norm="l1")
     elif method == "L1-LP":
         paras = l1_LP()
     elif method == "L2-EX":
         paras = l2_Exact()
     elif method == "L2-BO":
-        paras = parameter_serach(iters=15,norm="l1")
-        
+        paras = bo_parameter_serach(iters=15,norm="l1")
     party_wise_result, seat_wise_result = final_model(paras[:12])
     end_time = time.time()
     print(end_time)
