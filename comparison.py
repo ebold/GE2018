@@ -48,10 +48,10 @@ def real_results():
 #  Finds accuraccy            
 #==============================================================================
 def accuracy_seat_wise(pred_result=None):
-    
-    real_result = pd.read_csv("data\\results\\real_result.csv")
+
+    real_result = pd.read_csv("data/results/real_result.csv")
     if pred_result is None:
-        pred_result = pd.read_csv("data\\results\\result_party.csv") 
+        pred_result = pd.read_csv("data/results/result_party.csv")
     else:
         pred_result = pred_result
     constituencies =  real_result["Constituency"].unique().tolist()
@@ -78,7 +78,7 @@ def accuracy_seat_wise(pred_result=None):
 # find accuracy party share wise
 # =============================================================================
 def accuracy_share_wise(pred_result):
-    real_result = pd.read_csv("data\\results\\real_result.csv")
+    real_result = pd.read_csv("data/results/real_result.csv")
     real_result_party_wise = real_result["Party"].value_counts()
     parties = ["PTI","PML-N","PPPP","MMA"]
     error,pred_total,real_total  = 0,0,0

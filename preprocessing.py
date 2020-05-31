@@ -12,7 +12,7 @@ import pandas as pd
 # Proprcoesses voter distribution data                 
 #==============================================================================
 def Vote_distribution_preprocessed():
-    df_NA_voter_dist = pd.read_csv("E:\Semester3\GE2018\election\data\Election_2018_Stats\\Voter_Distribution_Lat_Lng.csv")
+    df_NA_voter_dist = pd.read_csv("data/Election_2018_Stats/Voter_Distribution_Lat_Lng.csv")
     #  Change constituency number from format NA-240 Rawalpindi to NA-240
     constituencies = df_NA_voter_dist["Constituency"].str.split(" ")
     constituencies = pd.DataFrame(constituencies.values.tolist()).add_prefix('constituency_')
@@ -21,8 +21,8 @@ def Vote_distribution_preprocessed():
     return df_NA_voter_dist                
                    
 def NA_list_preprocessed():                    
-    df_NA_list = pd.read_csv("E:\Semester3\GE2018\election\data\Election_2018_Stats\\NA_List.csv")
     
+    df_NA_list = pd.read_csv("data/Election_2018_Stats/NA_List.csv")
 
     # Replace full party names with their symbols
     # Mannual Replacements are preffered as there are many similar names of parties
@@ -180,8 +180,8 @@ def NA_list_preprocessed():
 # Fills nan values in party column with IND = Independent
 #==============================================================================
 def Perevious_results_preprocessed():
-    df_election_result_97 = pd.read_csv("E:\Semester3\GE2018\GE2018\election_prediction\data\Perevious_Results\election_results_1997.csv")
-    df_election_result_02_13 = pd.read_csv("E:\Semester3\GE2018\GE2018\election_prediction\data\Perevious_Results\election_results_2002-2013.csv")
+    df_election_result_97 = pd.read_csv("data/Perevious_Results/election_results_1997.csv")
+    df_election_result_02_13 = pd.read_csv("data/Perevious_Results/election_results_2002-2013.csv")
 
     frames = [df_election_result_97,df_election_result_02_13]
     df_perevious_results = pd.concat(frames)
@@ -250,8 +250,8 @@ def Perevious_results_preprocessed():
 # 
 #==============================================================================
 def Result_2018():
-    df_result_2018 = pd.read_csv("E:\Semester3\GE2018\GE2018\election_prediction\data\Election_2018_Stats\Election_result_2018.csv")
-    df_NA_18 = pd.read_csv("E:\\Semester3\\GE2018\\GE2018\\election_prediction\\data\\\Election_2018_Stats\\NA_list.csv")    
+    df_result_2018 = pd.read_csv("/data/Election_2018_Stats/Election_result_2018.csv")
+    df_NA_18 = pd.read_csv("data/Election_2018_Stats/NA_list.csv")
     # fill na values with values above
     df_result_2018 = df_result_2018.fillna(method="ffill")
     

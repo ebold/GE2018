@@ -26,7 +26,7 @@ def predict_random(constituency_data):
 # predicts based on gallup and ipor surveys
 #==============================================================================
 def predict_gallup(constituency_data, survey_name = "Gallup_2018_1.csv"):
-    df_gallup_survey = pd.read_csv(os.path.join(".\data\Gallup_Surveys\\",survey_name))
+    df_gallup_survey = pd.read_csv(os.path.join("data/Gallup_Surveys/",survey_name))
     constituency_number = constituency_data["Constituency Number (ID)"].iloc[0]
     constituency_number = str(constituency_number).split(" ")[0]
     province = constituency_data["Province"].iloc[0]
@@ -65,7 +65,7 @@ def predict_gallup(constituency_data, survey_name = "Gallup_2018_1.csv"):
 # Predicts constituency results based on dunya news results
 #==============================================================================
 def predict_dunya(constituency_data):
-    df_dunya_survey = pd.read_csv("data\Gallup_Surveys\Dunya_2018_1.csv")
+    df_dunya_survey = pd.read_csv("data/Gallup_Surveys/Dunya_2018_1.csv")
     # constituency data
     constituency_number = constituency_data["Constituency Number (ID)"].iloc[0]
     constituency_number = str(constituency_number).split(" ")[0]
@@ -108,7 +108,7 @@ def predict_dunya(constituency_data):
 # Predict based on party's history in pervious polls
 #==============================================================================
 def predict_partyHistory(constituency_data):
-    df_probability = pd.read_csv("E:\Semester3\GE2018\election\pervious_results_preprocessed\probability.csv")
+    df_probability = pd.read_csv("data/pervious_results_preprocessed/probability.csv")
     list_parties = constituency_data["Party Affiliation"].tolist()
     
     # find probability of winning for each candidate from gallup survey
@@ -144,7 +144,7 @@ def predict_partyHistory(constituency_data):
 # Predicts based on party's history in the specific constituency
 #==============================================================================
 def predict_districtHistory(constituency_data, file_name="results_2008.csv"):
-    df_district_histroy = pd.read_csv(os.path.join( "E:\Semester3\GE2018\election\pervious_results_preprocessed",file_name))
+    df_district_histroy = pd.read_csv(os.path.join( "data/pervious_results_preprocessed",file_name))
     # constituency data
     district_name = constituency_data["District"].iloc[0]
     list_parties = constituency_data["Party Affiliation"].tolist()
