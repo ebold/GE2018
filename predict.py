@@ -115,6 +115,10 @@ def predict_partyHistory(constituency_data):
     candidate_prob = []
     for party in list_parties:
         
+        if str(party) == 'nan':
+            candidate_prob.append(0)
+            continue
+
         party_prob = df_probability[df_probability["Party"] == party]["Probability"].tolist()
         # if party is in gallup survey or it has zero rating
         is_in_history = (df_probability[df_probability["Party"].isin([party])].index).tolist()
